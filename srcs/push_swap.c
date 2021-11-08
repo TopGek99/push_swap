@@ -10,16 +10,39 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
-#include <unistd.h>
+#include "push_swap.h"
 
-int main(void)
+int	is_negative_one(char *num)
 {
-	char *str = "Hello World";
-	int len;
+	if (num[0] == '-' && num[1] == '1' && ft_strlen(num) == 2)
+		return (1);
+	return (0);
+}
 
-	len = ft_strlen(str);
-	write(1, str, len);
+int main(int argc, char *argv[])
+{
+	stack *a;
+	stack *b;
+	int 	i;
+	int		charnum;
 
+	a = new_stack(argc - 1);
+	b = new_stack(argc - 1);
+	i = 1;
+	while (i < argc && argv[i])
+	{
+		charnum = ft_atoi(argv[i]);
+		if (charnum == -1 && !is_negative_one(argv[i]))
+		{
+			write(1, "Error\n", 6);
+			free(a->values);
+			free(a);
+			free(b->values);
+			free(b);
+			return (0);
+		}
+		push(a, charnum);
+		i++;
+	}
 	return (0);
 }

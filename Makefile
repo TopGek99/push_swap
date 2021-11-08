@@ -1,7 +1,8 @@
 NAME = push_swap
-FLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
+INC = -Iincludes/ -I$(LIB_DIR)/includes/
 
-SRCS = push_swap.c
+SRCS = push_swap.c stack_methods.c operations.c
 
 OBJS = $(SRCS:.c=.o)
 PUSH_OBJ = $(addprefix $(OBJ_DIR),$(OBJS))
@@ -20,7 +21,7 @@ $(NAME): $(PUSH_OBJ)
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
 	@echo "##### Creating" [ $@ ] " #####"
-	@gcc $(CFLAGS) -o $@ -c $<
+	@gcc $(CFLAGS) -o $@ -c $< $(INC)
 
 clean:
 	@make -C $(LIB_DIR) clean  --silent
