@@ -38,7 +38,6 @@ void	rotate(stack *s)
 		s->values[i] = s->values[i - 1];
 		i--;
 	}
-		
 	s->values[0] = temp;
 }
 

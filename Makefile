@@ -11,6 +11,9 @@ LIB_DIR = libft/
 SRC_DIR = srcs/
 OBJ_DIR = objs/
 
+ARGS = 4 67 3 87 23
+OS = $(shell uname)
+
 all: $(NAME)
 
 $(NAME): $(PUSH_OBJ)
@@ -22,6 +25,15 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
 	@echo "##### Creating" [ $@ ] " #####"
 	@gcc $(CFLAGS) -o $@ -c $< $(INC)
+
+test: $(NAME)
+	@echo "##### Testing" $(ARGS) " #####"
+	@echo "##### Output #####"
+	./$(NAME) $(ARGS)
+	@echo "##### Operations #####"
+	./$(NAME) $(ARGS) | wc -l
+	@echo "##### Checker Result #####"
+	./$(NAME) $(ARGS) | ./checker_$(OS) $(ARGS)
 
 clean:
 	@make -C $(LIB_DIR) clean  --silent

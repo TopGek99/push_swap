@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arowe <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/08 08:52:42 by arowe             #+#    #+#             */
-/*   Updated: 2021/11/08 08:52:44 by arowe            ###   ########.fr       */
+/*   Created: 2021/10/26 15:58:18 by arowe             #+#    #+#             */
+/*   Updated: 2021/10/26 15:58:21 by arowe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-# include "libft.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-typedef struct Stacks
-{
-	int	*values;
-	int	top;
-	int size;
-} stack;
+# include <unistd.h>
+# include <stdarg.h>
+# include <stdlib.h>
 
-stack	*new_stack(int size);
-void	push(stack *s, int n);
-int		pop(stack *s);
-void	print_stack(stack *s);
-void	swap(stack *s);
-void	pushab(stack *a, stack *b);
-void	rotate(stack *s);
-void	revrotate(stack *s);
+int		ft_printf(const char *s, ...);
+size_t	ft_printc(int c);
+size_t	ft_prints(char *s);
+size_t	ft_printp(unsigned long p);
+size_t	ft_printdi(int d);
+size_t	ft_printu(unsigned int d);
+size_t	ft_printx(unsigned int p, char flag);
 
 #endif

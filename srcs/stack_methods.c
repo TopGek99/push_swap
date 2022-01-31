@@ -28,7 +28,16 @@ void	push(stack *s, int n)
 	s->values[++s->top] = n;
 }
 
-int		pop(stack *s)
+int	pop(stack *s)
 {
 	return (s->values[s->top--]);
+}
+
+void	print_stack(stack *s)
+{
+	int i;
+
+	i = s->top;
+	while (i >= 0)
+		ft_printf("%d\n",s->values[i--]);
 }
