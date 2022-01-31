@@ -1,2 +1,3 @@
 objs
 libft/*.o
+push_swap_visualizer
