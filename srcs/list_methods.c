@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_methods.c                                    :+:      :+:    :+:   */
+/*   list_methods.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arowe <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,32 +12,30 @@
 
 #include "push_swap.h"
 
-stack	*new_stack(int size)
+node	*new_list(int value)
 {
-	stack	*new;
+	node	*new;
 
-	new = malloc(sizeof(stack));
-	new->values = malloc(sizeof(int) * size);
-	new->top = -1;
-	new->size = size;
-	return new;
+	new = malloc(sizeof(value));
+	if (!new)
+		return (NULL);
+	new->value = value;
+	new->next = NULL;
+	return (new);
 }
 
-void	push(stack *s, int n)
+void	node_add_front(node **list, node *new)
 {
-	s->values[++s->top] = n;
+	new->next = *list;
+	*list = new;
 }
 
-int	pop(stack *s)
+void	node_add_back(node **list, node *new)
 {
-	return (s->values[s->top--]);
-}
+	node *n;
 
-void	print_stack(stack *s)
-{
-	int i;
-
-	i = s->top;
-	while (i >= 0)
-		ft_printf("%d\n",s->values[i--]);
+	n = *list;
+	while (n->next)
+		n = n->next;
+	n->next = new;
 }

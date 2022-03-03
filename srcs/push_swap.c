@@ -39,7 +39,7 @@ int min(const int *tab, int size)
 	return (min_index);
 }
 
-int is_sorted(stack *s)
+int is_sorted(node *s)
 {
 	int i;
 
@@ -53,7 +53,7 @@ int is_sorted(stack *s)
 	return (1);
 }
 
-void	push_swap_three(stack *a)
+void	push_swap_three(node *a)
 {
 	if ((a->values[a->top] > a->values[a->top - 1] && a->values[a->top] < a->values[a->top - 2]) || (a->values[a->top - 1] > a->values[a->top - 2] && a->values[a->top] > a->values[a->top - 1]) || (a->values[a->top] < a->values[a->top - 2] && a->values[a->top - 1] > a->values[a->top - 2]))
 	{
@@ -71,7 +71,7 @@ void	push_swap_three(stack *a)
 		ft_printf("rra\n");
 	}
 }
-void	min_to_top(stack *s)
+void	min_to_top(node *s)
 {
 	int min_index;
 
@@ -91,7 +91,7 @@ void	min_to_top(stack *s)
 	}
 }
 
-void	push_swap_five(stack *a, stack *b)
+void	push_swap_five(node *a, node *b)
 {
 	int size = a->top;
 
@@ -111,7 +111,7 @@ void	push_swap_five(stack *a, stack *b)
 	}
 }
 
-void push_swap(stack *a, stack *b, int n)
+void push_swap(node *a, node *b, int n)
 {
 	if (n == 2 && a->values[1] > a->values[0])
 	{
@@ -126,13 +126,13 @@ void push_swap(stack *a, stack *b, int n)
 
 int main(int argc, char *argv[])
 {
-	stack *a;
-	stack *b;
+	node *a;
+	node *b;
 	int 	i;
 	int		charnum;
 
-	a = new_stack(argc - 1);
-	b = new_stack(argc - 1);
+	a = new_node(argc - 1);
+	b = new_node(argc - 1);
 	i = argc - 1;
 	while (i > 0 && argv[i])
 	{
@@ -152,3 +152,4 @@ int main(int argc, char *argv[])
 	push_swap(a, b, argc - 1);
 	return (0);
 }
+                                                                                                                                                                                             

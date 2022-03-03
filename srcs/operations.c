@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	swap(stack *s)
+void	swap(node *s)
 {
 	int	temp;
 
@@ -21,12 +21,12 @@ void	swap(stack *s)
 	s->values[s->top - 1] = temp;
 }
 
-void	pushab(stack *a, stack *b)
+void	pushab(node *a, node *b)
 {
 	push(b, pop(a));
 }
 
-void	rotate(stack *s)
+void	rotate(node *s)
 {
 	int	i;
 	int	temp;
@@ -41,7 +41,7 @@ void	rotate(stack *s)
 	s->values[0] = temp;
 }
 
-void	revrotate(stack *s)
+void	revrotate(node *s)
 {
 	int	i;
 	int	temp;

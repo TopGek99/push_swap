@@ -14,20 +14,19 @@
 # define PUSH_SWAP_H
 # include "libft.h"
 
-typedef struct Stacks
+typedef struct Linked_lists
 {
-	int	*values;
-	int	top;
-	int size;
-} stack;
+	int		value;
+	node	*next;
+} node;
 
-stack	*new_stack(int size);
-void	push(stack *s, int n);
-int		pop(stack *s);
-void	print_stack(stack *s);
-void	swap(stack *s);
-void	pushab(stack *a, stack *b);
-void	rotate(stack *s);
-void	revrotate(stack *s);
+node	*new_list(int value);
+void	push(node *s, int n);
+int		pop(node *s);
+void	print_node(node *s);
+void	swap(node *s);
+void	pushab(node *a, node *b);
+void	rotate(node *s);
+void	revrotate(node *s);
 
 #endif
