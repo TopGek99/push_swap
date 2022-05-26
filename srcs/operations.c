@@ -3,55 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   operations.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arowe <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: arowe <arowe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 10:26:22 by arowe             #+#    #+#             */
-/*   Updated: 2021/11/08 10:26:24 by arowe            ###   ########.fr       */
+/*   Updated: 2022/05/26 14:13:28 by arowe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(node *s)
+void	swap(t_node *head, char stack)
 {
-	int	temp;
+	t_node	*temp;
 
-	temp = s->values[s->top];
-	s->values[s->top] = s->values[s->top - 1];
-	s->values[s->top - 1] = temp;
+	temp = head->next;
+	head->next = temp->next;
+	temp->next = head;
+	head = temp;
+	ft_printf("s%c\n", stack);
 }
 
-void	pushab(node *a, node *b)
+// stack char specifies which stack the function pushes *to* i.e. if stack == 'a' it pushes from a to b
+void	push(t_node *head1, t_node *head2, char stack)
 {
-	push(b, pop(a));
+	t_node *temp;
+
+	temp = head2;
+	head2 = head1;
+	head2->next = temp->next;
+	temp->next = head1->next;
+	head1 = temp;
 }
 
-void	rotate(node *s)
-{
-	int	i;
-	int	temp;
-
-	i = s->top;
-	temp = s->values[s->top];
-	while (i > 0)
-	{
-		s->values[i] = s->values[i - 1];
-		i--;
-	}
-	s->values[0] = temp;
-}
-
-void	revrotate(node *s)
-{
-	int	i;
-	int	temp;
-
-	i = 0;
-	temp = s->values[0];
-	while (i < s->top)
-	{
-		s->values[i] = s->values[i + 1];
-		i++;
-	}
-	s->values[s->top] = temp;
-}

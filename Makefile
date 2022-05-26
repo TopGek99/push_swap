@@ -1,50 +1,30 @@
-NAME = push_swap
-CFLAGS = -Wall -Wextra -Werror
-INC = -Iincludes/ -I$(LIB_DIR)/includes/
+NAME=push_swap
+CC=gcc
+CFLAGS=-Wall -Wextra -Werror -I$(INC_DIR) -I$(LIB_DIR) -Ilibft/includes
+LDFLAGS=-Llibft -lft 
 
-SRCS = push_swap.c stack_methods.c operations.c
+SRC_DIR=src
+INC_DIR=includes
 
-OBJS = $(SRCS:.c=.o)
-PUSH_OBJ = $(addprefix $(OBJ_DIR),$(OBJS))
+_INC = push_swap.h
+INC = $(patsubst %, $(INC_DIR)/%, $(_INC))
 
-LIB_DIR = libft/
-SRC_DIR = srcs/
-OBJ_DIR = objs/
-
-ARGS = 4 67 3 87 23
-OS = $(shell uname)
+OBJ = push_swap.o operations.o list_methods.o
 
 all: $(NAME)
 
-$(NAME): $(PUSH_OBJ)
-	@make -C $(LIB_DIR) --silent
-	@gcc -o $(NAME) $(PUSH_OBJ) -L $(LIB_DIR) -lft
-	@echo "##### push_swap compiling finished! #####"
+%.o: $(SRC_DIR)/%.c $(INC)
+	$(CC) -c -o $@ $< $(CFLAGS)
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c
-	@mkdir -p $(OBJ_DIR)
-	@echo "##### Creating" [ $@ ] " #####"
-	@gcc $(CFLAGS) -o $@ -c $< $(INC)
+$(NAME): $(OBJ)
+	$(CC) -o $@ $^ $(CFLAGS) $(LDFLAGS)
 
-test: $(NAME)
-	@echo "##### Testing" $(ARGS) " #####"
-	@echo "##### Output #####"
-	./$(NAME) $(ARGS)
-	@echo "##### Operations #####"
-	./$(NAME) $(ARGS) | wc -l
-	@echo "##### Checker Result #####"
-	./$(NAME) $(ARGS) | ./checker_$(OS) $(ARGS)
+.PHONY: clean
 
 clean:
-	@make -C $(LIB_DIR) clean  --silent
-	@rm -f $(PUSH_OBJ)
-	@echo "##### Removed object files #####"
+	rm -f *.o
 
-fclean: clean
-	@make -C $(LIB_DIR) fclean  --silent
-	@rm -f $(PUSH_NAME)
-	@echo "##### Removed binary files #####"
+fclean:
+	rm -f *.o $(NAME)
 
 re: fclean all
-
-.PHONY: all clean fclean re

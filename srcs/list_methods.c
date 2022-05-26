@@ -12,9 +12,9 @@
 
 #include "push_swap.h"
 
-node	*new_list(int value)
+t_node	*new_list(int value)
 {
-	node	*new;
+	t_node	*new;
 
 	new = malloc(sizeof(value));
 	if (!new)
@@ -24,18 +24,29 @@ node	*new_list(int value)
 	return (new);
 }
 
-void	node_add_front(node **list, node *new)
+void	t_node_add_front(t_node *head, int new_val)
 {
-	new->next = *list;
-	*list = new;
+	t_node *new;
+
+	new = malloc(sizeof(new_val));
+	new->value = new_val;
+	new->next = head;
+	head = new;
 }
 
-void	node_add_back(node **list, node *new)
+void	t_node_add_back(t_node *head, int new_val)
 {
-	node *n;
+	t_node *temp;
+	t_node *new;
 
-	n = *list;
-	while (n->next)
-		n = n->next;
-	n->next = new;
+	if (head->next)
+		temp = head->next;
+	else
+		temp = head;
+	while (temp->next)
+		temp = temp->next;
+	new = malloc(sizeof(new_val));
+	new->value = new_val;
+	new->next = NULL;
+	temp->next = new;
 }
