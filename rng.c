@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
 	/* Print 5 random numbers from 0 to 49 */
 	for (i = 0; i < n; i++)
 	{
-		int new_num = rand();
+		int new_num = rand() % n;
 		if (!already_in(nums, i, new_num))
 		{
 			nums[i] = new_num;

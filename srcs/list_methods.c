@@ -67,3 +67,25 @@ void	t_node_add_back(t_list *list, int new_val)
 	temp->next = new;
 	list->length++;
 }
+
+void sort_list(t_list *list, t_list *sorted)
+{
+	int min;
+	t_node *temp;
+	t_node *temp2;
+
+	temp = list->head;
+	while (temp)
+	{
+		min = 2147483647;
+		temp2 = list->head;
+		while (temp2)
+		{
+			if (temp2->value < min && is_unique(temp2->value, sorted))
+				min = temp2->value;
+			temp2 = temp2->next;
+		}
+		t_node_add_back(sorted, min);
+		temp = temp->next;
+	}
+}

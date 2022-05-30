@@ -9,7 +9,7 @@ INC_DIR=includes
 _INC = push_swap.h
 INC = $(patsubst %, $(INC_DIR)/%, $(_INC))
 
-OBJ = push_swap.o operations.o list_methods.o
+OBJ = push_swap.o operations.o list_methods.o main.o utils.o
 
 all: $(NAME)
 

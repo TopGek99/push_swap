@@ -6,55 +6,11 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 16:31:24 by alex              #+#    #+#             */
-/*   Updated: 2022/05/26 18:43:23 by alex             ###   ########.fr       */
+/*   Updated: 2022/05/30 17:08:30 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	is_negative_one(char *num)
-{
-	if (num[0] == '-' && num[1] == '1' && ft_strlen(num) == 2)
-		return (1);
-	return (0);
-}
-
-int min(t_list *list)
-{
-	int i;
-	int	min;
-	int min_index;
-	t_node *temp;
-
-	i = 0;
-	min = 2147483647;
-	temp = list->head;
-	while (temp)
-	{
-		if (temp->value < min)
-		{
-			min = temp->value;
-			min_index = i;
-		}
-		temp = temp->next;
-		i++;
-	}
-	return (min_index);
-}
-
-int is_sorted(t_list *list)
-{
-	t_node *temp;
-
-	temp = list->head;
-	while (temp->next)
-	{
-		if(temp->next->value < temp->value)
-			return (0);
-		temp = temp->next;
-	}
-	return (1);
-}
 
 void	push_swap_three(t_list *a)
 {
@@ -71,16 +27,17 @@ void	push_swap_three(t_list *a)
 		push_swap_three(a);
 	}
 	else
-	{
 		rotate(a, 'a');
-	}
 }
 
-void push_swap_five(t_list *a, t_list *b)
+void	push_swap_five(t_list *a, t_list *b)
 {
+	int push_amount;
+
+	push_amount = 0;
 	while (a->length > 3)
 	{
-		if (min(a) < a->length / 2)
+		if (min(a) < (double)a->length / 2)
 		{
 			while (min(a) != 0)
 				rotate(a, 'a');
@@ -92,46 +49,68 @@ void push_swap_five(t_list *a, t_list *b)
 				rev_rotate(a, 'a');
 			push(a, b, 'b');
 		}
+		push_amount++;
 	}
 	push_swap_three(a);
-	push(b, a, 'a');
-	push(b, a, 'a');
-}
-
-void push_swap(t_list *a, t_list *b, int n)
-{
-	if (n == 2 && a->head->value > a->head->next->value)
-		swap(a, 'a');
-	else if (n == 3)
-		push_swap_three(a);
-	else if (n > 3 && n <= 5)
-		push_swap_five(a, b);
-}
-
-int main(int argc, char *argv[])
-{
-	t_list *a;
-	t_list *b;
-	int 	i;
-	int		charnum;
-
-	a = new_list();
-	b = new_list();
-	i = 1;
-	while (argv[i] && argc)
+	while (push_amount > 0)
 	{
-		charnum = ft_atoi(argv[i]);
-		if (charnum == -1 && !is_negative_one(argv[i]))
+		push(b, a, 'a');
+		push_amount--;
+	}
+}
+
+int	max(t_list *list)
+{
+	int		max;
+	t_node *temp;
+
+	max = -2147483648;
+	temp = list->head;
+	while (temp)
+	{
+		if (temp->value > max)
+			max = temp->value;
+		temp = temp->next;
+	}
+	return (max);
+}
+
+int get_bit_amount(int max)
+{
+	int bit_amount;
+
+	while (max > 0)
+	{
+		max /= 2;
+		bit_amount++;
+	}
+	return (bit_amount);
+}
+
+void	push_swap_big(t_list *a, t_list *b)
+{
+	int		bit_amount;
+	int		i;
+	int		j;
+	int		a_length;
+
+	bit_amount = get_bit_amount(max(a));
+	i = 0;
+	a_length = a->length;
+	while (i < bit_amount)
+	{
+		j = 0;
+		while (j < a_length)
 		{
-			ft_printf("Error\n");
-			free(a);
-			free(b);
-			return (0);
+			if ((((a->head->value) >> i) & 1) == 0)
+				push(a, b, 'b');
+			else
+				rotate(a, 'a');
+			j++;
 		}
-		t_node_add_back(a, charnum);
+		while (b->length > 0)
+			push(b, a, 'a');
 		i++;
 	}
-	push_swap(a, b, argc - 1);
-	return (0);
 }
-                                                                                                                                                                                             
+                                                                                                                                                                              
