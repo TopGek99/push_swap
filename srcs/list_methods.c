@@ -24,7 +24,7 @@ t_list	*new_list(void)
 
 void	t_node_print(t_list *list)
 {
-	t_node *temp;
+	t_node	*temp;
 
 	temp = list->head;
 	while (temp)
@@ -36,7 +36,7 @@ void	t_node_print(t_list *list)
 
 void	t_node_add_front(t_list *list, int new_val)
 {
-	t_node *new;
+	t_node	*new;
 
 	new = malloc(sizeof(new_val));
 	new->value = new_val;
@@ -47,13 +47,13 @@ void	t_node_add_front(t_list *list, int new_val)
 
 void	t_node_add_back(t_list *list, int new_val)
 {
-	t_node *temp;
-	t_node *new;
+	t_node	*temp;
+	t_node	*new;
 
 	if (!list->head)
 	{
 		t_node_add_front(list, new_val);
-		return;
+		return ;
 	}
 	else if (list->head->next)
 		temp = list->head->next;
@@ -68,11 +68,11 @@ void	t_node_add_back(t_list *list, int new_val)
 	list->length++;
 }
 
-void sort_list(t_list *list, t_list *sorted)
+void	sort_list(t_list *list, t_list *sorted)
 {
-	int min;
-	t_node *temp;
-	t_node *temp2;
+	int		min;
+	t_node	*temp;
+	t_node	*temp2;
 
 	temp = list->head;
 	while (temp)

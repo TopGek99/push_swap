@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 08:52:42 by arowe             #+#    #+#             */
-/*   Updated: 2022/05/30 15:13:24 by alex             ###   ########.fr       */
+/*   Updated: 2022/05/30 17:34:06 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@
 
 typedef struct linked_list_node
 {
-	int					value;
+	int						value;
 	struct linked_list_node	*next;
-} t_node;
+}	t_node;
 
 typedef struct linked_list
 {
-	t_node *head;
+	t_node	*head;
 	int		length;
-} t_list;
+}	t_list;
 
 t_list	*new_list(void);
 void	t_node_print(t_list *list);

@@ -6,9 +6,16 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 16:58:15 by alex              #+#    #+#             */
-/*   Updated: 2022/05/30 16:58:16 by alex             ###   ########.fr       */
+/*   Updated: 2022/05/30 17:21:16 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+int	ft_isspace(char c)
+{
+	return (str[index] == ' ' || str[index] == '\n'
+		|| str[index] == '\t' || str[index] == '\v'
+		|| str[index] == '\f' || str[index] == '\r');
+}
 
 int	ft_atoi(const char *str)
 {
@@ -17,20 +24,19 @@ int	ft_atoi(const char *str)
 	int	temp;
 
 	index = 0;
-	res = 1;
-	temp = 0;
-	while (str[index] == ' ' || str[index] == '\n'
-		|| str[index] == '\t' || str[index] == '\v'
-		|| str[index] == '\f' || str[index] == '\r')
+	while (ft_isspace(str[index]))
 		index++;
+	res = 1;
 	if (str[index] == '-')
 	{
 		res *= -1;
 		index++;
 	}
-	while (str[index] >= '0' && str[index] <= '9')
+	temp = 0;
+	while (ft_isdigit(str[index]))
 	{
-		if ((temp > (temp * 10) || temp > (temp * 10) + (str[index] - '0')) && (((long)temp * 10) + (str[index] - '0')) * res != -2147483648)
+		if ((temp > (temp * 10) || temp > (temp * 10) + (str[index] - '0'))
+			&& (((long)temp * 10) + (str[index] - '0')) * res != -2147483648)
 			return (-1);
 		temp *= 10;
 		temp += (str[index++] - '0');

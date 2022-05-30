@@ -6,13 +6,13 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 17:00:02 by alex              #+#    #+#             */
-/*   Updated: 2022/05/30 17:00:59 by alex             ###   ########.fr       */
+/*   Updated: 2022/05/30 17:25:29 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void push_swap(t_list *a, t_list *b, int n)
+void	push_swap(t_list *a, t_list *b, int n)
 {
 	if (is_sorted(a))
 		return ;
@@ -26,7 +26,7 @@ void push_swap(t_list *a, t_list *b, int n)
 		push_swap_big(a, b);
 }
 
-int error(t_list *a, t_list *b)
+int	error(t_list *a, t_list *b)
 {
 	write(2, "Error\n", 6);
 	free(a);
@@ -34,12 +34,12 @@ int error(t_list *a, t_list *b)
 	return (0);
 }
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
-	t_list *a;
-	t_list *b;
-	int i;
-	int charnum;
+	t_list	*a;
+	t_list	*b;
+	int		i;
+	int		charnum;
 
 	a = new_list();
 	b = new_list();
@@ -47,7 +47,8 @@ int main(int argc, char *argv[])
 	while (argv[i])
 	{
 		charnum = ft_atoi(argv[i]);
-		if ((charnum == -1 && !is_negative_one(argv[i])) || !is_unique(charnum, a))
+		if ((charnum == -1 && !is_negative_one(argv[i]))
+			|| !is_unique(charnum, a))
 			return (error(a, b));
 		t_node_add_back(a, charnum);
 		i++;

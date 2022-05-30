@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/26 16:31:24 by alex              #+#    #+#             */
-/*   Updated: 2022/05/30 17:08:30 by alex             ###   ########.fr       */
+/*   Created: 2022/05/30 17:28:31 by alex              #+#    #+#             */
+/*   Updated: 2022/05/30 17:31:39 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ void	push_swap_three(t_list *a)
 {
 	if (is_sorted(a))
 		return ;
-	else if (a->head->value > a->head->next->value && (a->head->value < a->head->next->next->value || a->head->next->value > a->head->next->next->value))
+	else if (a->head->value > a->head->next->value
+		&& (a->head->value < a->head->next->next->value
+			|| a->head->next->value > a->head->next->next->value))
 	{
 		swap(a, 'a');
 		push_swap_three(a);
@@ -32,7 +34,7 @@ void	push_swap_three(t_list *a)
 
 void	push_swap_five(t_list *a, t_list *b)
 {
-	int push_amount;
+	int	push_amount;
 
 	push_amount = 0;
 	while (a->length > 3)
@@ -62,7 +64,7 @@ void	push_swap_five(t_list *a, t_list *b)
 int	max(t_list *list)
 {
 	int		max;
-	t_node *temp;
+	t_node	*temp;
 
 	max = -2147483648;
 	temp = list->head;
@@ -75,9 +77,9 @@ int	max(t_list *list)
 	return (max);
 }
 
-int get_bit_amount(int max)
+int	get_bit_amount(int max)
 {
-	int bit_amount;
+	int	bit_amount;
 
 	while (max > 0)
 	{
@@ -89,10 +91,10 @@ int get_bit_amount(int max)
 
 void	push_swap_big(t_list *a, t_list *b)
 {
-	int		bit_amount;
-	int		i;
-	int		j;
-	int		a_length;
+	int	bit_amount;
+	int	i;
+	int	j;
+	int	a_length;
 
 	bit_amount = get_bit_amount(max(a));
 	i = 0;
@@ -113,4 +115,3 @@ void	push_swap_big(t_list *a, t_list *b)
 		i++;
 	}
 }
-                                                                                                                                                                              
