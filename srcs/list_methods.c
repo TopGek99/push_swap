@@ -12,41 +12,58 @@
 
 #include "push_swap.h"
 
-t_node	*new_list(int value)
+t_list	*new_list(void)
 {
-	t_node	*new;
+	t_list	*list;
 
-	new = malloc(sizeof(value));
-	if (!new)
-		return (NULL);
-	new->value = value;
-	new->next = NULL;
-	return (new);
+	list = (t_list *)malloc(sizeof(t_list));
+	list->head = NULL;
+	list->length = 0;
+	return (list);
 }
 
-void	t_node_add_front(t_node *head, int new_val)
+void	t_node_print(t_list *list)
+{
+	t_node *temp;
+
+	temp = list->head;
+	while (temp)
+	{
+		ft_printf("%d\n", temp->value);
+		temp = temp->next;
+	}
+}
+
+void	t_node_add_front(t_list *list, int new_val)
 {
 	t_node *new;
 
 	new = malloc(sizeof(new_val));
 	new->value = new_val;
-	new->next = head;
-	head = new;
+	new->next = list->head;
+	list->head = new;
+	list->length++;
 }
 
-void	t_node_add_back(t_node *head, int new_val)
+void	t_node_add_back(t_list *list, int new_val)
 {
 	t_node *temp;
 	t_node *new;
 
-	if (head->next)
-		temp = head->next;
+	if (!list->head)
+	{
+		t_node_add_front(list, new_val);
+		return;
+	}
+	else if (list->head->next)
+		temp = list->head->next;
 	else
-		temp = head;
+		temp = list->head;
 	while (temp->next)
 		temp = temp->next;
 	new = malloc(sizeof(new_val));
 	new->value = new_val;
 	new->next = NULL;
 	temp->next = new;
+	list->length++;
 }

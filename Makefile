@@ -1,9 +1,9 @@
 NAME=push_swap
 CC=gcc
-CFLAGS=-Wall -Wextra -Werror -I$(INC_DIR) -I$(LIB_DIR) -Ilibft/includes
+CFLAGS=-Wall -Wextra -Werror -Ilibft/includes -I$(INC_DIR) -I$
 LDFLAGS=-Llibft -lft 
 
-SRC_DIR=src
+SRC_DIR=srcs
 INC_DIR=includes
 
 _INC = push_swap.h

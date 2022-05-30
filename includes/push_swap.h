@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arowe <arowe@student.42.fr>                +#+  +:+       +#+        */
+/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 08:52:42 by arowe             #+#    #+#             */
-/*   Updated: 2022/05/26 14:09:16 by arowe            ###   ########.fr       */
+/*   Updated: 2022/05/26 18:33:19 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,25 @@
 # define PUSH_SWAP_H
 # include "libft.h"
 
-typedef struct linked_lists
+typedef struct linked_list_node
 {
-	int		value;
-	t_node	*next;
+	int					value;
+	struct linked_list_node	*next;
 } t_node;
 
-t_node	*new_list(int value);
-int		pop(t_node *s);
-void	print_t_node(t_node *s);
-void	swap(t_node *s, char stack);
-void	push(t_node *head1, t_node *head2, char stack);
-void	rotate(t_node *s);
-void	revrotate(t_node *s);
+typedef struct linked_list
+{
+	t_node *head;
+	int		length;
+} t_list;
+
+t_list	*new_list(void);
+void	t_node_print(t_list *list);
+void	t_node_add_front(t_list *list, int new_val);
+void	t_node_add_back(t_list *list, int new_val);
+void	swap(t_list *list, char stack);
+void	push(t_list *list1, t_list *list2, char stack);
+void	rotate(t_list *list, char stack);
+void	rev_rotate(t_list *list, char stack);
 
 #endif
