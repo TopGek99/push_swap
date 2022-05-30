@@ -1,6 +1,4 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-make: *** No rule to make target 'push_swap.o', needed by 'push_swap'.  Stop.
-
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -8,7 +6,7 @@ make: *** No rule to make target 'push_swap.o', needed by 'push_swap'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon May 30 17:08:25 2022
+# Make data base, printed on Tue May 31 06:25:29 2022
 
 # Variables
 
@@ -17,7 +15,7 @@ make: *** No rule to make target 'push_swap.o', needed by 'push_swap'.  Stop.
 # automatic
 ?F = $(notdir $?)
 # environment
-WSLENV = ELECTRON_RUN_AS_NODE/w:
+WSLENV = VSCODE_WSL_EXT_LOCATION/up
 # default
 .SHELLFLAGS := -c
 # makefile (from 'Makefile', line 12)
@@ -37,7 +35,7 @@ SHELL = /bin/sh
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en","availableLanguages":{}}
 # environment
-_ = /mnt/c/Users/alexm/AppData/Local/Programs/Microsoft VS Code/bin/code
+_ = /home/alex/.vscode-server/bin/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5/node
 # makefile (from 'Makefile', line 3)
 CFLAGS = -Wall -Wextra -Werror -Ilibft/includes -I$(INC_DIR) -I$
 # makefile (from 'Makefile', line 1)
@@ -61,7 +59,7 @@ XDG_RUNTIME_DIR = /mnt/wslg/runtime-dir
 # environment
 VSCODE_LOG_STACK = false
 # environment
-VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-90b883d8-c772-4b42-ae91-87926f011bcd.sock
+VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-54df1911-d63d-4fa5-a49c-e62de948ab39.sock
 # makefile (from 'Makefile', line 4)
 LDFLAGS = -Llibft -lft 
 # default
@@ -79,7 +77,7 @@ PWD = /home/alex/work/42/push_swap/github_repo
 # default
 .LOADED := 
 # environment
-WSL_INTEROP = /run/WSL/8_interop
+WSL_INTEROP = /run/WSL/11_interop
 # environment
 PULSE_SERVER = /mnt/wslg/PulseServer
 # makefile (from 'Makefile', line 7)
@@ -93,7 +91,7 @@ LESSCLOSE = /usr/bin/lesspipe %s %s
 # environment
 LOGNAME = alex
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
@@ -105,7 +103,7 @@ MAKE = $(MAKE_COMMAND)
 # default
 MAKECMDGOALS := all
 # environment
-SHLVL = 1
+SHLVL = 0
 # makefile (from 'Makefile', line 2)
 CC = gcc
 # makefile (from 'Makefile', line 9)
@@ -173,7 +171,7 @@ WSL_DISTRO_NAME = Ubuntu
 # environment
 MOTD_SHOWN = update-motd
 # variable set hash-table stats:
-# Load=80/1024=8%, Rehash=0, Collisions=8/113=7%
+# Load=80/1024=8%, Rehash=0, Collisions=8/119=7%
 
 # Pattern-specific Variable Values
 
@@ -181,10 +179,11 @@ MOTD_SHOWN = update-motd
 
 # Directories
 
-# . (device 2080, inode 51854): 17 files, no impossibilities.
-# srcs (device 2080, inode 64810): 7 files, 1 impossibilities.
+# . (device 2080, inode 51854): 14 files, no impossibilities.
+# includes (device 2080, inode 64761): 1 files, no impossibilities so far.
+# srcs (device 2080, inode 64810): 3 files, no impossibilities so far.
 
-# 24 files, 1 impossibilities in 2 directories.
+# 18 files, no impossibilities in 3 directories.
 
 # Implicit Rules
 
@@ -200,7 +199,10 @@ all: push_swap
 #  Command line target.
 #  Implicit rule search has been done.
 #  File does not exist.
-#  File has not been updated.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/6=0%
 
 .PHONY: clean
 #  Implicit rule search has not been done.
@@ -208,10 +210,24 @@ all: push_swap
 #  File has not been updated.
 
 # Not a target:
+srcs/push_swap.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-30 17:31:39.964225153
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
 list_methods.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+
+# Not a target:
+includes/push_swap.h:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-30 18:06:52.054243107
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 Makefile:
@@ -252,16 +268,41 @@ operations.o:
 #  Modification time never checked.
 #  File has not been updated.
 
-# Not a target:
-push_swap.o:
+push_swap.o: srcs/push_swap.c includes/push_swap.h
 #  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'push_swap'
 #  File does not exist.
-#  File has not been updated.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+ 
+# @ := push_swap.o
+# automatic
+# % := 
+# automatic
+# * := push_swap
+# automatic
+# + := srcs/push_swap.c includes/push_swap.h
+# automatic
+# | := 
+# automatic
+# < := srcs/push_swap.c
+# automatic
+# ^ := srcs/push_swap.c includes/push_swap.h
+# automatic
+# ? := srcs/push_swap.c includes/push_swap.h
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/16=6%
+#  recipe to execute (from 'Makefile', line 17):
+	$(CC) -c -o $@ $< $(CFLAGS)
 
 push_swap: push_swap.o operations.o list_methods.o main.o utils.o
 #  Implicit rule search has not been done.
 #  File does not exist.
-#  File has not been updated.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/6=0%
 #  recipe to execute (from 'Makefile', line 20):
 	$(CC) -o $@ $^ $(CFLAGS) $(LDFLAGS)
 
@@ -278,20 +319,19 @@ main.o:
 #  File has not been updated.
 
 # files hash-table stats:
- 
-# Load=14/1024=1%, Rehash=0, Collisions=0/38=0%
+# Load=16/1024=2%, Rehash=0, Collisions=0/43=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 42 / storage = 403 B / avg = 9 B
-# current buf: size = 8162 B / used = 403 B / count = 42 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 37 / storage = 350 B / avg = 9 B
+# current buf: size = 8162 B / used = 350 B / count = 37 / avg = 9 B
 
-# strcache performance: lookups = 61 / hit rate = 31%
+# strcache performance: lookups = 58 / hit rate = 36%
 # hash-table stats:
-# Load=42/8192=1%, Rehash=0, Collisions=2/61=3%
-# Finished Make data base on Mon May 30 17:08:25 2022
+# Load=37/8192=0%, Rehash=0, Collisions=1/58=2%
+# Finished Make data base on Tue May 31 06:25:29 2022
 
  

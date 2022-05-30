@@ -1,10 +1,10 @@
-make --dry-run --keep-going --print-directory
+make --dry-run --always-make --keep-going --print-directory
 make: Entering directory '/home/alex/work/42/push_swap/github_repo'
+gcc -c -o push_swap.o srcs/push_swap.c -Wall -Wextra -Werror -Ilibft/includes -Iincludes -I$
 gcc -c -o operations.o srcs/operations.c -Wall -Wextra -Werror -Ilibft/includes -Iincludes -I$
 gcc -c -o list_methods.o srcs/list_methods.c -Wall -Wextra -Werror -Ilibft/includes -Iincludes -I$
 gcc -c -o main.o srcs/main.c -Wall -Wextra -Werror -Ilibft/includes -Iincludes -I$
 gcc -c -o utils.o srcs/utils.c -Wall -Wextra -Werror -Ilibft/includes -Iincludes -I$
+gcc -o push_swap push_swap.o operations.o list_methods.o main.o utils.o -Wall -Wextra -Werror -Ilibft/includes -Iincludes -I$ -Llibft -lft 
 make: Leaving directory '/home/alex/work/42/push_swap/github_repo'
  
-make: *** No rule to make target 'push_swap.o', needed by 'push_swap'.
-
