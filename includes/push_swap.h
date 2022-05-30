@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 08:52:42 by arowe             #+#    #+#             */
-/*   Updated: 2022/05/30 17:34:06 by alex             ###   ########.fr       */
+/*   Updated: 2022/05/30 18:06:52 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ void	normalise(t_list *list);
 void	push_swap_three(t_list *a);
 void	push_swap_five(t_list *a, t_list *b);
 void	push_swap_big(t_list *a, t_list *b);
+void	free_list(t_list *list);
 
 #endif

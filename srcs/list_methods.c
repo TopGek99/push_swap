@@ -38,7 +38,7 @@ void	t_node_add_front(t_list *list, int new_val)
 {
 	t_node	*new;
 
-	new = malloc(sizeof(new_val));
+	new = (t_node *)malloc(sizeof(t_node));
 	new->value = new_val;
 	new->next = list->head;
 	list->head = new;
@@ -61,7 +61,7 @@ void	t_node_add_back(t_list *list, int new_val)
 		temp = list->head;
 	while (temp->next)
 		temp = temp->next;
-	new = malloc(sizeof(new_val));
+	new = (t_node *)malloc(sizeof(t_node));
 	new->value = new_val;
 	new->next = NULL;
 	temp->next = new;

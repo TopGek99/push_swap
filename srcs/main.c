@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 17:00:02 by alex              #+#    #+#             */
-/*   Updated: 2022/05/30 17:25:29 by alex             ###   ########.fr       */
+/*   Updated: 2022/05/30 18:05:54 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,26 @@ void	push_swap(t_list *a, t_list *b, int n)
 		push_swap_big(a, b);
 }
 
+void	free_list(t_list *list)
+{
+	t_node	*temp1;
+	t_node	*temp2;
+
+	temp1 = list->head;
+	while (temp1)
+	{
+		temp2 = temp1;
+		temp1 = temp2->next;
+		free(temp2);
+	}
+	free(list);
+}
+
 int	error(t_list *a, t_list *b)
 {
 	write(2, "Error\n", 6);
-	free(a);
-	free(b);
+	free_list(a);
+	free_list(b);
 	return (0);
 }
 
@@ -41,6 +56,8 @@ int	main(int argc, char *argv[])
 	int		i;
 	int		charnum;
 
+	if (argc == 1)
+		return (0);
 	a = new_list();
 	b = new_list();
 	i = 1;
@@ -55,7 +72,7 @@ int	main(int argc, char *argv[])
 	}
 	normalise(a);
 	push_swap(a, b, argc - 1);
-	free(a);
-	free(b);
+	free_list(a);
+	free_list(b);
 	return (0);
 }
