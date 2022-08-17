@@ -1,6 +1,6 @@
 NAME=push_swap
 CC=gcc
-CFLAGS=-Wall -Wextra -Werror -Ilibft/includes -I$(INC_DIR) -I$
+CFLAGS=-Wall -Wextra -Werror -Ilibft/includes -I$(INC_DIR)
 LDFLAGS=-Llibft -lft 
 
 SRC_DIR=srcs

@@ -1,8 +1,0 @@
-{
-	"makefile.extensionOutputFolder": "./.vscode",
-	"files.associations": {
-		"*html": "html",
-		"algorithm": "c",
-		"sstream": "c"
-	}
-}

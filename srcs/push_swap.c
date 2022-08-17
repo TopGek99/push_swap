@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: arowe <arowe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 17:28:31 by alex              #+#    #+#             */
-/*   Updated: 2022/05/30 17:31:39 by alex             ###   ########.fr       */
+/*   Updated: 2022/06/02 12:42:49 by arowe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ int	get_bit_amount(int max)
 {
 	int	bit_amount;
 
+	bit_amount = 0;
 	while (max > 0)
 	{
 		max /= 2;
